@@ -1,0 +1,142 @@
+# Pages CMS — editing dashboard for github.com/Ashokkondra/My_profile
+# Hosted dashboard: https://app.pagescms.org/
+# Media output includes the GitHub Pages project prefix /My_profile/.
+media:
+  - name: images
+    label: Project images
+    input: assets/uploads/images
+    output: /My_profile/assets/uploads/images
+    categories: [image]
+    rename: safe
+  - name: documents
+    label: PDFs and documents
+    input: assets/uploads/documents
+    output: /My_profile/assets/uploads/documents
+    categories: [document]
+    rename: safe
+  - name: videos
+    label: Small videos
+    input: assets/uploads/videos
+    output: /My_profile/assets/uploads/videos
+    categories: [video]
+    rename: safe
+content:
+  - name: profile
+    label: 01 · Profile & About
+    type: file
+    path: content/profile.json
+    format: json
+    operations: {delete: false}
+    fields:
+      - {name: first_name, label: First name, type: string, required: true}
+      - {name: last_name, label: Last name, type: string, required: true}
+      - {name: headline_role, label: Engineering focus, type: string}
+      - {name: education, label: Education status, type: string}
+      - {name: college, label: College, type: string}
+      - {name: graduation_year, label: Expected graduation year, type: string}
+      - {name: hero_summary, label: Homepage introduction, type: text}
+      - {name: about_paragraph_one, label: About paragraph 1, type: text}
+      - {name: about_paragraph_two, label: About paragraph 2, type: text}
+      - {name: github_profile, label: GitHub profile URL, type: string}
+  - name: projects
+    label: 02 · Projects
+    type: file
+    path: content/projects.json
+    format: json
+    list: true
+    operations: {delete: false}
+    fields:
+      - {name: id, label: Unique ID (e.g. robotic-arm), type: string, required: true}
+      - {name: title, label: Case study title, type: string, required: true}
+      - {name: card_title, label: Project card heading, type: string, required: true}
+      - {name: card_subtitle, label: Project card subtitle, type: string}
+      - {name: short, label: Short name, type: string}
+      - {name: card_type, label: Small label on card, type: string}
+      - name: category
+        label: Project filter
+        type: select
+        options:
+          values:
+            - {name: analysis, label: Analysis / FEA}
+            - {name: design, label: CAD design}
+      - {name: category_label, label: Case study category, type: string}
+      - {name: discipline, label: Discipline, type: string}
+      - {name: summary, label: Case study summary, type: text}
+      - {name: card_description, label: Short description on card, type: text}
+      - {name: overview, label: Project context, type: text}
+      - {name: approach, label: Methodology, type: text}
+      - {name: takeaway, label: Learning / findings, type: text}
+      - {name: tools, label: Tools and technical tags, type: string, list: true}
+      - name: thumbnail
+        label: Project thumbnail
+        type: image
+        options: {media: images}
+      - {name: repo_url, label: Original GitHub project URL (optional), type: string}
+      - {name: art_footer, label: Image footer caption, type: string}
+      - name: card_size
+        label: Homepage card size
+        type: select
+        options:
+          values: [large, small]
+      - name: card_theme
+        label: Project background tone
+        type: select
+        options:
+          values: [blue, peach, slate, sand]
+      - name: gallery_images
+        label: Additional gallery images (optional)
+        type: image
+        options:
+          media: images
+          multiple: {max: 12}
+      - name: gallery_documents
+        label: Project PDF documents (optional)
+        type: file
+        options:
+          media: documents
+          multiple: {max: 8}
+          extensions: [pdf]
+      - name: gallery_videos
+        label: Project videos (optional, small files)
+        type: file
+        options:
+          media: videos
+          multiple: {max: 3}
+  - name: expertise
+    label: 03 · Expertise & Skills
+    type: file
+    path: content/expertise.json
+    format: json
+    list: true
+    operations: {delete: false}
+    fields:
+      - {name: title, label: Area of expertise, type: string, required: true}
+      - {name: description, label: What I do / know, type: text}
+      - {name: tools, label: Software / skill tags, type: string, list: true}
+  - name: resume
+    label: 04 · Resume
+    type: file
+    path: content/resume.json
+    format: json
+    operations: {delete: false}
+    fields:
+      - {name: title, label: Resume section title, type: string}
+      - {name: description, label: Resume description, type: text}
+      - name: pdf_file
+        label: Upload / replace resume PDF
+        type: file
+        options:
+          media: documents
+          extensions: [pdf]
+  - name: contact
+    label: 05 · Contact Details
+    type: file
+    path: content/contact.json
+    format: json
+    operations: {delete: false}
+    fields:
+      - {name: email, label: Email address, type: string}
+      - {name: phone, label: Mobile number, type: string}
+      - {name: linkedin_url, label: LinkedIn profile URL, type: string}
+      - {name: location, label: City / Location, type: string}
+      - {name: opportunity_message, label: Contact section description, type: text}

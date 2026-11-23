@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Design & CAD",
+    "description": "Three-dimensional modelling, component geometry, assemblies and engineering drawings.",
+    "tools": [
+      "PTC Creo",
+      "SolidWorks",
+      "3D CAD"
+    ]
+  },
+  {
+    "title": "CAE & Simulation",
+    "description": "Stress, deformation and natural-frequency studies, with attention to modelling assumptions.",
+    "tools": [
+      "ANSYS Workbench",
+      "Static Structural",
+      "Modal Analysis"
+    ]
+  },
+  {
+    "title": "Manufacturing",
+    "description": "Machining processes, cutting-fluid studies, tolerances and manufacturing fundamentals.",
+    "tools": [
+      "Machining",
+      "GD&T",
+      "MATLAB (learning)"
+    ]
+  }
+]
