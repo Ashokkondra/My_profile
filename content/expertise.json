@@ -5,7 +5,8 @@
     "tools": [
       "PTC Creo",
       "SolidWorks",
-      "AUTODESK FUSION"
+      "Autodesk Fusion 360",
+      "AUTOCAD"
     ]
   },
   {
@@ -14,7 +15,10 @@
     "tools": [
       "ANSYS Workbench",
       "Static Structural",
-      "Modal Analysis"
+      "Modal Analysis",
+      "Thermal Analysis",
+      "Hypermesh",
+      "Matlab"
     ]
   },
   {
@@ -23,7 +27,10 @@
     "tools": [
       "Machining",
       "GD&T",
-      "MATLAB (learning)"
+      "Lean Manufacturing",
+      "Additive Manufacturing ",
+      "3D printing",
+      "CNC Machining"
     ]
   }
 ]
