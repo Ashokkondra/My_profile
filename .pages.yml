@@ -14,6 +14,18 @@ media:
     output: /My_profile/assets/uploads/documents
     categories: [document]
     rename: safe
+  - name: models
+    label: Interactive 3D models (GLB)
+    input: assets/uploads/models
+    output: /My_profile/assets/uploads/models
+    extensions: [glb]
+    rename: safe
+  - name: cad_files
+    label: Original CAD files (optional)
+    input: assets/uploads/cad
+    output: /My_profile/assets/uploads/cad
+    extensions: [zip, step, stp, stl, iges, igs, prt, asm]
+    rename: safe
   - name: videos
     label: Small videos
     input: assets/uploads/videos
@@ -71,6 +83,19 @@ content:
         label: Project thumbnail
         type: image
         options: {media: images}
+      - name: model_3d
+        label: Interactive 3D model (GLB; optional)
+        type: file
+        options:
+          media: models
+          extensions: [glb]
+      - {name: model_caption, label: 3D model description (optional), type: text}
+      - name: original_cad_file
+        label: Original CAD archive / model (optional)
+        type: file
+        options:
+          media: cad_files
+          extensions: [zip, step, stp, stl, iges, igs, prt, asm]
       - {name: repo_url, label: Original GitHub project URL (optional), type: string}
       - {name: art_footer, label: Image footer caption, type: string}
       - name: card_size

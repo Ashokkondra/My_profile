@@ -121,6 +121,7 @@
     const next=projects[(index+1)%projects.length];
     $('next-project-link').href=`project.html?id=${encodeURIComponent(next.id)}`;
     set('next-project-name',next.short||next.card_title||next.title);
+    window.portfolio3D?.configure(p);
     const local=renderUploadedGallery(p);
     if(info) loadRepository(info,local);
     else{

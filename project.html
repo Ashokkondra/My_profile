@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="project.css">
-  <script src="script.js" defer></script><script src="cms-content.js" defer></script><script src="project.js" defer></script>
+  <script src="script.js" defer></script><script src="cms-content.js" defer></script><script src="project-3d.js" defer></script><script src="project.js" defer></script>
 </head>
 <body class="project-page">
   <a class="skip-link" href="#main">Skip to content</a><div class="scroll-progress" aria-hidden="true"></div>
@@ -19,6 +19,40 @@
     <section class="case-hero shell"><div class="case-copy"><div class="eyebrow"><span class="square-mark"></span> <span id="project-counter">CASE STUDY</span> / <span id="category">ENGINEERING</span></div><h1 id="project-title">Loading project...</h1><p class="case-subhead" id="summary"></p><div class="case-actions"><a class="button button-primary" id="repo-link" href="https://github.com/Ashokkondra" target="_blank" rel="noopener noreferrer">Explore source repository ↗</a><a class="button button-text" href="#project-evidence">View project gallery ↓</a></div></div><div class="case-art art-blue" id="case-art"><span class="art-serial">TECHNICAL STUDY / <span id="art-index">01</span></span><img id="case-illustration" src="assets/chassis.svg" alt="Illustrative technical drawing"><img id="case-repo-photo" class="repo-photo" alt="Original project image" hidden><span class="art-footer" id="case-art-footer">ENGINEERING / PROCESS <span>2027</span></span></div></section>
     <div class="case-stripe"><div class="shell"><span>DESIGN → ANALYSE → DOCUMENT</span><span id="case-repo-name">PROJECT DOCUMENTATION</span></div></div>
     <section class="shell case-insights section-pad"><div class="case-main"><div class="eyebrow"><span class="square-mark"></span> THE ENGINEERING STORY</div><h2>From concept to <span class="ital">understanding.</span></h2><div class="insight-block"><span class="insight-number">01 / CONTEXT</span><h3>What this project explores</h3><p id="overview"></p></div><div class="insight-block"><span class="insight-number">02 / METHODOLOGY</span><h3>How I approached it</h3><p id="approach"></p></div><div class="insight-block"><span class="insight-number">03 / LEARNING</span><h3>What to look for</h3><p id="takeaway"></p></div></div><aside class="case-aside"><span class="aside-top">PROJECT SPECIFICATION / <span id="spec-index">01</span></span><div class="spec-block"><span>DISCIPLINE</span><strong id="discipline"></strong></div><div class="spec-block"><span>TOOLS & TOPICS</span><div class="micro-tags" id="tools"></div></div><div class="spec-block"><span>PROJECT MATERIALS</span><p>Images, PDF reports and videos are displayed from the public GitHub repository when available. Original CAD files are accessible through the source repository link.</p></div></aside></section>
+
+    <section class="interactive-model-section section-pad" id="interactive-model" aria-labelledby="interactive-model-heading" hidden>
+      <div class="shell">
+        <div class="section-head"><div><div class="eyebrow"><span class="square-mark"></span> INTERACTIVE ENGINEERING MODEL</div><h2 id="interactive-model-heading">Explore it <span class="ital">in 3D.</span></h2></div><p class="head-side-text">Inspect the actual CAD geometry in your browser. Rotate, zoom, and explore the model.</p></div>
+        <div class="model-viewer-layout">
+          <div class="model-stage" id="model-stage">
+            <div class="model-cover" id="model-cover">
+              <span class="model-glyph" aria-hidden="true">⌗</span>
+              <strong>3D engineering model</strong>
+              <p>Load the model to inspect its geometry interactively.</p>
+              <button class="button button-primary" type="button" id="model-load-button">Load interactive model ↗</button>
+            </div>
+            <div class="model-canvas" id="model-canvas"></div>
+            <p class="model-status" id="model-status" role="status" aria-live="polite" hidden></p>
+          </div>
+          <aside class="model-sidebar">
+            <span class="section-overline">3D MODEL / INTERACTIVE</span>
+            <h3 id="model-title">Engineering model</h3>
+            <p class="model-caption" id="model-caption">Drag to rotate and scroll or pinch to zoom.</p>
+            <div class="model-instructions"><span>01 / DRAG TO ROTATE</span><span>02 / SCROLL OR PINCH TO ZOOM</span><span>03 / INSPECT DETAILS</span></div>
+            <div class="model-button-row">
+              <button type="button" id="model-autorotate" disabled aria-pressed="false">Start rotation</button>
+              <button type="button" id="model-reset" disabled>Reset view</button>
+              <button type="button" id="model-fullscreen" disabled>Fullscreen</button>
+            </div>
+            <div class="model-file-links">
+              <a id="model-download" target="_blank" rel="noopener noreferrer" href="#" hidden>Download 3D GLB ↗</a>
+              <a id="model-cad-download" target="_blank" rel="noopener noreferrer" href="#" hidden>Download original CAD ↗</a>
+            </div>
+            <p class="model-disclaimer">The 3D preview shows exported geometry. Technical results and specifications should be read from the project documentation.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
     <section class="repo-showcase section-pad" id="project-evidence"><div class="shell"><div class="section-head"><div><div class="eyebrow"><span class="square-mark"></span> EXPLORE THE EVIDENCE</div><h2>Inside the <span class="ital">project.</span></h2></div><p class="head-side-text">Browse uploaded gallery files and available project-repository previews. Open a preview to inspect the file.</p></div>
     <div class="repo-heading" id="gallery"><div><span class="section-overline">PROJECT EVIDENCE</span><h3>Gallery & documents</h3></div><span id="preview-count">LOADING</span></div>
     <div class="load-box" role="status" id="preview-status">Retrieving available previews from GitHub…</div><div class="preview-grid" id="previews"></div>
