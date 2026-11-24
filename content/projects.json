@@ -47,6 +47,7 @@
       "Assembly"
     ],
     "thumbnail": "/My_profile/assets/uploads/images/v6-turbo-engine-cover.webp",
+    "model_3d": "/My_profile/assets/uploads/models/v6turboengineasm-compressed-2.glb",
     "repo_url": "https://github.com/Ashokkondra/V6-Turbo-Engine",
     "art_footer": "PARTS / ASSEMBLIES",
     "card_size": "small",
@@ -73,6 +74,7 @@
       "Assembly"
     ],
     "thumbnail": "/My_profile/assets/uploads/images/jet-engine-cover.webp",
+    "model_3d": "/My_profile/assets/uploads/models/v6turboengineasm-compressed-3.glb",
     "repo_url": "https://github.com/Ashokkondra/Jet-Engine",
     "art_footer": "ASSEMBLY / SECTION VIEWS",
     "card_size": "small",
@@ -99,6 +101,7 @@
       "Deformation"
     ],
     "thumbnail": "/My_profile/assets/uploads/images/crankshaft-analysis-cover.webp",
+    "model_3d": "/My_profile/assets/uploads/models/crankshaft-compressed.glb",
     "repo_url": "https://github.com/Ashokkondra/Failure-Analysis-of-Crankshaft",
     "art_footer": "STRESS / DEFORMATION",
     "card_size": "large",
