@@ -41,15 +41,3 @@
 .model-stage:fullscreen .model-canvas model-viewer{min-height:100vh}
 @media(max-width:900px){.model-viewer-layout{grid-template-columns:1fr}.model-stage,.model-canvas model-viewer{min-height:430px}.model-sidebar{border-left:0;border-top:1px solid var(--line);padding:30px}}
 @media(max-width:580px){.model-stage,.model-canvas model-viewer{min-height:330px}.model-sidebar{padding:23px}.model-cover{padding:16px}.model-glyph{font-size:67px}}
-
-/* V11 — format chooser for GLB, STEP and OBJ. */
-.model-format-picker{margin:24px 0 19px}
-.model-format-picker[hidden]{display:none!important}
-.model-format-label{font:800 10px 'Space Grotesk',sans-serif;letter-spacing:.11em;color:var(--muted);display:block;margin-bottom:11px}
-.model-format-tabs{display:flex;flex-wrap:wrap;gap:7px}
-.model-format-tab{padding:10px 16px;border:1px solid var(--line);font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.04em;color:var(--ink);background:var(--bg);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
-.model-format-tab:hover{border-color:var(--ink)}
-.model-format-tab[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.model-format-tab:focus-visible{outline:2px solid var(--accent-ink);outline-offset:2px}
-.model-canvas canvas{display:block;width:100%;height:100%;touch-action:none}
-@media(max-width:580px){.model-format-tab{flex:1;min-width:65px}.model-format-tabs{flex-wrap:nowrap}}

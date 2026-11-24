@@ -1,21 +1,24 @@
-# Multi-format viewer (V11)
+# Interactive 3D Portfolio — GLB Only
 
-Open Pages CMS → My_profile → 02 Projects to upload GLB, STEP/STP or OBJ files separately. Upload files to the matching per-format field and save. The public project page shows available format tabs automatically. GLB remains the default, while STEP and OBJ load only when selected. The project gallery, thumbnails, resume and original repository links remain unchanged.
+The interactive project viewer supports **GLB models only**. It retains the existing V10 viewer, project galleries, project thumbnails, project case studies, resume, contact details and Pages CMS editing.
 
-STEP processing uses occt-import-js 0.0.23 in a worker and is tessellated for browser viewing, not feature-level CAD editing. OBJ is mesh-only and its external MTL materials are not loaded. Both use Three.js 0.181.0. Keep optimized copies for smooth mobile viewing. Files may be replaced or removed using Pages CMS; clearing a field removes that viewing option. If no 3D model remains, the 3D viewer is hidden.
+## Update a 3D model in Pages CMS
 
-Existing original Creo files can still be shared via the Original CAD field. Large STEP files may require simplified exports. See GitHub Pages media limits and browser memory constraints.
+1. Visit https://app.pagescms.org/ and select Ashokkondra/My_profile.
+2. Open **02 · Projects** and choose a project.
+3. In **Interactive 3D Model (GLB; optional)**, select or upload a `.glb` file.
+4. Optionally edit the **3D model description**.
+5. Click **Save**. Pages CMS commits the GLB selection and updated project JSON.
+6. Open the matching project page at https://ashokkondra.github.io/My_profile/ and click **Load interactive model**.
+7. Replace the file through the same field, or clear it to hide the 3D section.
 
-## Large STEP file uploads through Pages CMS
+The viewer supports rotate, zoom, auto-rotate, reset and fullscreen. It downloads the model on demand. If the GLB file cannot load, existing images and PDF/video gallery previews remain available.
 
-If a direct STEP/STP upload fails with HTTP 413, the hosted Pages CMS request is too large. This cannot be fixed by website HTML/CSS or .pages.yml settings.
+The original engineering CAD files may still be linked from each project's **Original GitHub project URL**, and project repositories remain unchanged.
 
-Use compressed STEP upload:
-1. On Windows, right-click a single STEP (.step or .stp) file → Compress to ZIP (or Send to → Compressed ZIP folder). Put just **one STEP file** inside; avoid nesting multiple STEP models.
-2. Check the compressed ZIP size. Aim below ~3 MB for reliable uploads to hosted Pages CMS; the exact server-side limit is outside this website's control. If the ZIP also gets 413, simplify/export a smaller model. This feature cannot bypass the server limit.
-3. In app.pagescms.org → My_profile → 02 · Projects, select your project and find **Compressed STEP / STP (ZIP)**.
-4. Upload the ZIP through Pages CMS, click Save. The existing STEP field may remain blank.
-5. Open the public project case study, choose STEP, then Load STEP model. The website will decompress the ZIP inside a browser worker and display the geometry.
-6. To replace it later, select a new ZIP and Save. Removing the ZIP will revert to the ordinary STEP field if populated.
+## Notes
 
-This ZIP route compresses the CAD source without substituting a mesh export. The GLB and OBJ options remain unchanged. The STEP viewer is for geometry inspection, not feature-history editing.
+- Only GLB uploads are configured for the interactive 3D section; STEP/STP, STL, OBJ and ZIP CAD upload fields have been removed from Pages CMS.
+- The main portfolio files are unchanged outside the 3D viewer and its CMS configuration.
+- Large GLB files may trigger upload limits at hosted Pages CMS. Optimize the viewer export if necessary.
+- A GLB is a visualization export, not the native Creo source geometry.
