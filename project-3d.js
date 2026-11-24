@@ -70,10 +70,11 @@
     note('');
     for(const b of tabs.children)b.setAttribute('aria-pressed',String(b.dataset.format===key));
     get('model-download').href=item.url;
-    get('model-download').textContent='Download '+item.label+' file ↗';
+    get('model-download').textContent=item.key==='step' && /\.zip(?:$|[?#])/i.test(item.url)
+      ? 'Download STEP archive (ZIP) ↗' : 'Download '+item.label+' file ↗';
     get('model-download').hidden=false;
     get('model-disclaimer').textContent=key==='step'
-      ? 'STEP geometry is tessellated into a browser preview. For precise solids, dimensions, or editing, download the STEP file and open it in CAD software.'
+      ? 'STEP geometry is tessellated into a browser preview. A ZIP upload is unpacked automatically. For precise solids, dimensions, or editing, open the original STEP in CAD software.'
       : key==='obj'
       ? 'OBJ displays mesh geometry. External MTL files and textures are not loaded by this viewer.'
       : 'The GLB preview shows exported geometry. Check project reports for engineering calculations and results.';
@@ -81,8 +82,10 @@
   function configure(p) {
     choices=[];
     for(const spec of specs){
-      const url=cms?.media(p?.[spec.field]);
-      if(url && spec.pattern.test(url))choices.push({...spec,url});
+      const zipped=spec.key==='step' ? cms?.media(p?.model_step_zip) : '';
+      const url=zipped && /\.zip(?:$|[?#])/i.test(zipped) ? zipped : cms?.media(p?.[spec.field]);
+      if(url && (spec.pattern.test(url) || (spec.key==='step' && /\.zip(?:$|[?#])/i.test(url))))
+        choices.push({...spec,url});
     }
     if(!choices.length){clear();root.hidden=true;return;}
     root.hidden=false;
@@ -172,7 +175,7 @@
     if(generation!==id)throw new Error('Cancelled');
     return data;
   }
-  function convertStep(buffer,id) {
+  function convertStep(buffer,id,zipped=false) {
     return new Promise((resolve,reject)=>{
       let worker;
       try{worker=new Worker('step-worker.js');}
@@ -196,7 +199,7 @@
         if(!Array.isArray(e.data?.meshes))return finish(new Error('Invalid STEP conversion output.'));
         finish(null,e.data.meshes);
       };
-      worker.postMessage({buffer},[buffer]);
+      worker.postMessage({buffer,zipped},[buffer]);
     });
   }
   function buildStep(meshes,THREE) {
@@ -280,7 +283,7 @@
     if(kind==='obj'){group=buildObj(data,libs);}
     else {
       note('Tessellating STEP solids for browser display…');
-      const meshes=await convertStep(data,id);
+      const meshes=await convertStep(data,id,/\.zip(?:$|[?#])/i.test(url));
       if(generation!==id)return;
       group=buildStep(meshes,libs.THREE);
     }

@@ -26,6 +26,12 @@ media:
     output: /My_profile/assets/uploads/step
     extensions: [step, stp]
     rename: safe
+  - name: compressed_steps
+    label: Compressed STEP models (ZIP)
+    input: assets/uploads/step-zip
+    output: /My_profile/assets/uploads/step-zip
+    extensions: [zip]
+    rename: safe
   - name: obj_models
     label: OBJ mesh models
     input: assets/uploads/obj
@@ -107,6 +113,12 @@ content:
         options:
           media: step_models
           extensions: [step, stp]
+      - name: model_step_zip
+        label: Compressed STEP / STP (ZIP; for large text STEP files)
+        type: file
+        options:
+          media: compressed_steps
+          extensions: [zip]
       - name: model_obj
         label: OBJ model (optional)
         type: file
