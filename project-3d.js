@@ -62,12 +62,13 @@
     setStatus('Preparing interactive viewer…');
     try {
       await loadLibrary();
-      // model-viewer does not enable EXT_meshopt_compression by default.
-      // Set the decoder URL before creating a model-viewer element.
-      if (window.ModelViewerElement) {
-        window.ModelViewerElement.meshoptDecoderLocation =
-          'https://cdn.jsdelivr.net/npm/meshoptimizer@0.22.0/meshopt_decoder.js';
-      }
+      // The registered custom-element constructor is reliable even if the ESM
+      // bundle does not expose window.ModelViewerElement.
+      // Serve Meshopt locally to avoid another network/CDN dependency.
+      const ModelViewer = window.customElements?.get('model-viewer');
+      if (!ModelViewer) throw new Error('The GLB viewer component was not registered.');
+      ModelViewer.meshoptDecoderLocation =
+        new URL('assets/vendor/meshopt_decoder.js', document.baseURI).href;
       $('model-canvas').replaceChildren();
       loaded = false;
       controlsReady(false);
@@ -85,14 +86,25 @@
         setStatus('');
         controlsReady(true);
       }, {once:true});
-      viewer.addEventListener('error', () => {
+      viewer.addEventListener('error', async (event) => {
         busy = false;
         loaded = false;
         controlsReady(false);
-        setStatus('Unable to display this GLB. Check that its public file loads and that its compression is supported. The original project gallery is still available.', true);
         $('model-load-button').disabled = false;
         $('model-load-button').textContent = 'Retry model ↗';
         $('model-cover').hidden = false;
+        let message = event.detail?.type === 'webglcontextlost'
+          ? 'The browser lost its 3D graphics context. Reload this page and retry.'
+          : 'The GLB file could not be decoded. Try exporting a standard GLB without Meshopt or Draco compression.';
+        if (event.detail?.type !== 'webglcontextlost') {
+          try {
+            const response = await fetch(modelPath, {method: 'HEAD', cache: 'no-store'});
+            if (!response.ok) message = 'Cannot download this GLB (HTTP ' + response.status + '). Verify the file is saved and deployed.';
+          } catch (_) {
+            message = 'Could not reach the GLB file. Check the connection or open the download link.';
+          }
+        }
+        setStatus(message + ' The original project gallery remains available.', true);
       }, {once:true});
       $('model-canvas').append(viewer);
       setStatus('Loading 3D geometry…');
