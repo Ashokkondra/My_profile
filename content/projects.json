@@ -20,13 +20,11 @@
       "Modal Analysis"
     ],
     "thumbnail": "/My_profile/assets/uploads/images/motorcycle-chassis-cover.webp",
+    "model_3d": "/My_profile/assets/uploads/models/bikecasingnew.glb",
     "repo_url": "https://github.com/Ashokkondra/Motor-cycle-chassis-FEA-analysis-",
     "art_footer": "STATIC + MODAL ANALYSIS",
     "card_size": "large",
-    "card_theme": "blue",
-    "gallery_images": [],
-    "gallery_documents": [],
-    "gallery_videos": []
+    "card_theme": "blue"
   },
   {
     "id": "v6-turbo-engine",
@@ -52,10 +50,7 @@
     "repo_url": "https://github.com/Ashokkondra/V6-Turbo-Engine",
     "art_footer": "PARTS / ASSEMBLIES",
     "card_size": "small",
-    "card_theme": "peach",
-    "gallery_images": [],
-    "gallery_documents": [],
-    "gallery_videos": []
+    "card_theme": "peach"
   },
   {
     "id": "jet-engine",
@@ -81,10 +76,7 @@
     "repo_url": "https://github.com/Ashokkondra/Jet-Engine",
     "art_footer": "ASSEMBLY / SECTION VIEWS",
     "card_size": "small",
-    "card_theme": "slate",
-    "gallery_images": [],
-    "gallery_documents": [],
-    "gallery_videos": []
+    "card_theme": "slate"
   },
   {
     "id": "crankshaft-analysis",
@@ -110,9 +102,6 @@
     "repo_url": "https://github.com/Ashokkondra/Failure-Analysis-of-Crankshaft",
     "art_footer": "STRESS / DEFORMATION",
     "card_size": "large",
-    "card_theme": "sand",
-    "gallery_images": [],
-    "gallery_documents": [],
-    "gallery_videos": []
+    "card_theme": "sand"
   }
 ]
