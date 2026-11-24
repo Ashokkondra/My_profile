@@ -62,6 +62,12 @@
     setStatus('Preparing interactive viewer…');
     try {
       await loadLibrary();
+      // model-viewer does not enable EXT_meshopt_compression by default.
+      // Set the decoder URL before creating a model-viewer element.
+      if (window.ModelViewerElement) {
+        window.ModelViewerElement.meshoptDecoderLocation =
+          'https://cdn.jsdelivr.net/npm/meshoptimizer@0.22.0/meshopt_decoder.js';
+      }
       $('model-canvas').replaceChildren();
       loaded = false;
       controlsReady(false);
@@ -83,7 +89,7 @@
         busy = false;
         loaded = false;
         controlsReady(false);
-        setStatus('This GLB could not be rendered. Please replace it with a valid, optimized GLB in Pages CMS. The original project gallery is still available.', true);
+        setStatus('Unable to display this GLB. Check that its public file loads and that its compression is supported. The original project gallery is still available.', true);
         $('model-load-button').disabled = false;
         $('model-load-button').textContent = 'Retry model ↗';
         $('model-cover').hidden = false;
