@@ -20,6 +20,18 @@ media:
     output: /My_profile/assets/uploads/models
     extensions: [glb]
     rename: safe
+  - name: step_models
+    label: STEP / STP CAD models
+    input: assets/uploads/step
+    output: /My_profile/assets/uploads/step
+    extensions: [step, stp]
+    rename: safe
+  - name: obj_models
+    label: OBJ mesh models
+    input: assets/uploads/obj
+    output: /My_profile/assets/uploads/obj
+    extensions: [obj]
+    rename: safe
   - name: cad_files
     label: Original CAD files (optional)
     input: assets/uploads/cad
@@ -89,6 +101,18 @@ content:
         options:
           media: models
           extensions: [glb]
+      - name: model_step
+        label: STEP / STP model (optional)
+        type: file
+        options:
+          media: step_models
+          extensions: [step, stp]
+      - name: model_obj
+        label: OBJ model (optional)
+        type: file
+        options:
+          media: obj_models
+          extensions: [obj]
       - {name: model_caption, label: 3D model description (optional), type: text}
       - name: original_cad_file
         label: Original CAD archive / model (optional)

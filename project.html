@@ -9,6 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="project.css">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.181.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.181.0/examples/jsm/"}}
+  </script>
   <script src="script.js" defer></script><script src="cms-content.js" defer></script><script src="project-3d.js" defer></script><script src="project.js" defer></script>
 </head>
 <body class="project-page">
@@ -37,6 +40,10 @@
           <aside class="model-sidebar">
             <span class="section-overline">3D MODEL / INTERACTIVE</span>
             <h3 id="model-title">Engineering model</h3>
+            <div class="model-format-picker" id="model-format-picker" hidden>
+              <span class="model-format-label">CHOOSE VIEWING FORMAT</span>
+              <div class="model-format-tabs" id="model-format-tabs" role="group" aria-label="Choose 3D viewing format"></div>
+            </div>
             <p class="model-caption" id="model-caption">Drag to rotate and scroll or pinch to zoom.</p>
             <div class="model-instructions"><span>01 / DRAG TO ROTATE</span><span>02 / SCROLL OR PINCH TO ZOOM</span><span>03 / INSPECT DETAILS</span></div>
             <div class="model-button-row">
@@ -45,10 +52,10 @@
               <button type="button" id="model-fullscreen" disabled>Fullscreen</button>
             </div>
             <div class="model-file-links">
-              <a id="model-download" target="_blank" rel="noopener noreferrer" href="#" hidden>Download 3D GLB ↗</a>
+              <a id="model-download" target="_blank" rel="noopener noreferrer" href="#" hidden>Download 3D model ↗</a>
               <a id="model-cad-download" target="_blank" rel="noopener noreferrer" href="#" hidden>Download original CAD ↗</a>
             </div>
-            <p class="model-disclaimer">The 3D preview shows exported geometry. Technical results and specifications should be read from the project documentation.</p>
+            <p class="model-disclaimer" id="model-disclaimer">The 3D preview shows exported geometry. Technical results and specifications should be read from the project documentation.</p>
           </aside>
         </div>
       </div>
